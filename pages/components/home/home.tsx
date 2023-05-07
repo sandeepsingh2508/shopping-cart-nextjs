@@ -88,19 +88,11 @@ function Home({ search, brand, category, price }: { search: any, brand: any, cat
             return category.includes(item.category)
         });
     }
-    if(price.length){
-        updatedList= updatedList.filter(item =>{
-            return price.includes(item.price)
-        })
-    }
-    const sortProductByPrice=(()=>{
-      updatedList =updatedList.sort((a, b) => (a.price > b.price ? 1 : -1));
-        
-})
+   
     
     return (
         <div className="">
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center justify-between mb-4">
                 <div className="flex font-bold">
                     <p>Home</p>
                     <p>&nbsp;&nbsp;/&nbsp;&nbsp;</p>
@@ -112,10 +104,10 @@ function Home({ search, brand, category, price }: { search: any, brand: any, cat
                     {
                         
                     }
-                    <select className="w-28 bg-slate-100 rounded outline-none border-solid border-1 border-slaty-900 px-1 mr-14 py-1">
+                    <select className="px-1 py-1 border-solid rounded outline-none w-28 bg-slate-100 border-1 border-slaty-900 mr-14">
                         <option>Sort by</option>
-                        <option onChange={sortProductByPrice} > low to high</option>
-                        <option value={"h2l"} onChange={sortProductByPrice}> high to low</option>
+                        <option > low to high</option>
+                        <option > high to low</option>
 
                     </select>
                 </div>
