@@ -76,14 +76,14 @@ function Home({ search, brand, category, price }: { search: any, brand: any, cat
     
     // Include all elements which includes the search query
     let updatedList = Data.filter((item) => {
-        return item.item.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+        return item.item?.toLowerCase().indexOf(search?.toLowerCase()) !== -1;
     })
-    if (brand.length) {
+    if (brand?.length) {
         updatedList = updatedList.filter(item => {
             return brand.includes(item.brand)
         });
     }
-    if (category.length) {
+    if (category?.length) {
         updatedList = updatedList.filter(item => {
             return category.includes(item.category)
         });
