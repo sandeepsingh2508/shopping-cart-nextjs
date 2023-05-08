@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import Cart from "./cart";
-// import Data from "../data";
 
 function Home({ search, brand, category, price }: { search: any, brand: any, category: any, price: any }) {
-    const Data = [
+    let Data = [
         {
             image: "https://cdn.pixabay.com/photo/2016/03/24/22/09/hyacinthus-orientalis-1277753_960_720.jpg",
             item: "Elegant design flower pot",
@@ -72,6 +72,8 @@ function Home({ search, brand, category, price }: { search: any, brand: any, cat
             category: "B"
         }
     ];
+
+    const [sortOrder, setSortOrder] = useState("");
     
     
     // Include all elements which includes the search query
@@ -88,38 +90,48 @@ function Home({ search, brand, category, price }: { search: any, brand: any, cat
             return category.includes(item.category)
         });
     }
-   
-    
-    return (
-        <div className="">
-            <div className="flex items-center justify-between mb-4">
-                <div className="flex font-bold">
-                    <p>Home</p>
-                    <p>&nbsp;&nbsp;/&nbsp;&nbsp;</p>
-                    <p>Home decoration</p>
-                    <p>&nbsp;&nbsp;/&nbsp;&nbsp;</p>
-                    <p>Artifical</p>
-                </div>
-                <div>
-                    {
-                        
-                    }
-                    <select className="px-1 py-1 border-solid rounded outline-none w-28 bg-slate-100 border-1 border-slaty-900 mr-14">
-                        <option>Sort by</option>
-                        <option > low to high</option>
-                        <option > high to low</option>
 
-                    </select>
-                </div>
-            </div>
-            <div className="flex gap-5" style={{ flexWrap: "wrap" }}>
-                {updatedList.map((item, index) => {
-                    return <Cart key={index} item={item} />
-                })}
+  const handleSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortOrder(event.target.value);
+  };
 
-            </div>
+  let sortedList = [...updatedList];
+
+  if (sortOrder === "low-to-high") {
+    sortedList.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "high-to-low") {
+    sortedList.sort((a, b) => b.price - a.price);
+  }
+
+  return (
+    <div className="">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex font-bold">
+          <p>Home</p>
+          <p>&nbsp;&nbsp;/&nbsp;&nbsp;</p>
+          <p>Home decoration</p>
+          <p>&nbsp;&nbsp;/&nbsp;&nbsp;</p>
+          <p>Artifical</p>
         </div>
-    )
+        <div>
+          <select
+            className="px-1 py-1 border-solid rounded outline-none w-28 bg-slate-100 border-1 border-slaty-900 mr-14"
+            value={sortOrder}
+            onChange={handleSort}
+          >
+            <option value="">Sort by</option>
+            <option value="low-to-high">Low to high</option>
+            <option value="high-to-low">High to low</option>
+          </select>
+        </div>
+      </div>
+      <div className="flex gap-5" style={{ flexWrap: "wrap" }}>
+        {sortedList.map((item, index) => {
+          return <Cart key={index} item={item} />;
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default Home;

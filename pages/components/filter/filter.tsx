@@ -30,14 +30,14 @@ const Filter = ({ setBrand, setCategory, setPrice }: { setBrand: any, setCategor
 
     }
     return (
-        <div className="w-72 bg-white drop-shadow-lg">
-            <div className="flex justify-between items-center px-5 h-10">
+        <div className="bg-white w-72 drop-shadow-lg">
+            <div className="flex items-center justify-between h-10 px-5">
                 <p>Filter</p>
                 <FaFilter />
             </div>
             <hr className="" />
-            <div className="pl-5 py-3">
-                <p className="mb-1 font-semibold  ">Brand</p>
+            <div className="py-3 pl-5">
+                <p className="mb-1 font-semibold ">Brand</p>
                 <div className="filter-font">
 
                 <p><input type="checkbox" value="brandA" onChange={handleChange} /> &nbsp;Number A</p>
@@ -48,7 +48,7 @@ const Filter = ({ setBrand, setCategory, setPrice }: { setBrand: any, setCategor
                 </div>
             </div>
             <hr className="" />
-            <div className="pl-5 py-3">
+            <div className="py-3 pl-5">
                 <p className="mb-1 font-semibold">Category</p>
                 <div className="filter-font">
 
@@ -60,13 +60,13 @@ const Filter = ({ setBrand, setCategory, setPrice }: { setBrand: any, setCategor
                 </div>
             </div>
             <hr className="text-black" />
-            <div className="pl-5 py-3">
+            <div className="py-3 pl-5">
                 <p className="mb-1 font-semibold">Price</p>
-                <p><input type="checkbox" value="100" onChange={handlePrice} /> &nbsp;{"< $100"}</p>
-                <p><input type="checkbox" value="200" onChange={handlePrice} /> &nbsp;{"$100-$199"}</p>
-                <p><input type="checkbox" value="600" onChange={handlePrice} /> &nbsp;{"$200-$599"}</p>
-                <p><input type="checkbox" value="1000" onChange={handlePrice} /> &nbsp;{"$600-$999"}</p>
-                <p><input type="checkbox" value="1100" onChange={handlePrice} /> &nbsp;{"> $1000"}</p>
+                <p><input type="checkbox" value="0 100" onChange={handlePrice} /> &nbsp;{"< $100"}</p>
+                <p><input type="checkbox" value="100 200" onChange={handlePrice} /> &nbsp;{"$100-$199"}</p>
+                <p><input type="checkbox" value="200 600" onChange={handlePrice} /> &nbsp;{"$200-$599"}</p>
+                <p><input type="checkbox" value="600 1000" onChange={handlePrice} /> &nbsp;{"$600-$999"}</p>
+                <p><input type="checkbox" value="1000 2000000" onChange={handlePrice} /> &nbsp;{"> $1000"}</p>
             </div>
         </div>
     )
